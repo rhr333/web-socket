@@ -1,13 +1,7 @@
-const express = require('express')
-const webserver = express()
-  .use((req, res) =>
-    res.sendFile('/websocket-client.html', { root: __dirname })
-  )
-  .listen(3000, () => console.log(`Listening on ${3000}`))
-
-const { WebSocketServer } = require('ws')
-const sockserver = new WebSocketServer({ port: 3333 })
-sockserver.on('connection', ws => {
+const WebSocket = require('ws')
+const PORT = process.env.PORT || 3000;
+const wss = new WebSocket.Server({ port: PORT })
+wss.on('connection', ws => {
   console.log('New client connected!')
   ws.send('connection established')
   ws.on('close', () => console.log('Client has disconnected!'))
