@@ -1,30 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WebSocket</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSockets</title>
 </head>
 <body>
-  <script>
-    // Create a new WebSocket object
-    const socket = new WebSocket('ws://example.com');
+    <h1>WebSockets Tutorial</h1>
 
-    // Connection opened
-    socket.addEventListener('open', (event) => {
-        socket.send('Hello Server!');
-    });
-
-    // Listen for messages
-    socket.addEventListener('message', (event) => {
-        console.log('Message from server: ', event.data);
-    });
-
-    // Connection closed
-    socket.addEventListener('close', (event) => {
-        console.log('Server closed connection: ', event);
-    });
-  </script>
+    <script>
+      const wsc = new WebSocket('wss://localhost:1337');
+      wsc.onopen = function () {
+        wsc.send('Hello from client');
+      };
+    </script>
 </body>
 </html>
