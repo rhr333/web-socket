@@ -6,7 +6,7 @@ wss.on('connection', ws => {
   ws.send('connection established')
   ws.on('close', () => console.log('Client has disconnected!'))
   ws.on('message', data => {
-    sockserver.clients.forEach(client => {
+    wss.clients.forEach(client => {
       console.log(`distributing message: ${data}`)
       client.send(`${data}`)
     })
