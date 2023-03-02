@@ -9,7 +9,7 @@
   </form>
   <div id="messages"></div>
   <script>
-    const webSocket = new WebSocket('ws://localhost:3333/');
+    const webSocket = new WebSocket('ws://websocker-rhr.onrender.com');
     webSocket.onmessage = (event) => {
       console.log(event)
       document.getElementById('messages').innerHTML += 
